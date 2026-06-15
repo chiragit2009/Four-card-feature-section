@@ -1,249 +1,346 @@
-body, *{
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    background-color: hsl(0, 0%, 98%);
-    margin: 0 auto;
+/* ==========================================
+   CSS Variables - Color Palette
+   ========================================== */
+
+:root {
+  /* Light Mode Colors */
+  --bg-primary: #fafaf9;
+  --bg-secondary: #ffffff;
+  --text-primary: #1a1a1a;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  
+  /* Accent Colors (Retro) */
+  --accent-cyan: #00d4ff;
+  --accent-red: #ff006e;
+  --accent-yellow: #ffbe0b;
+  --accent-blue: #0093ff;
+  
+  /* Dark Mode Colors */
+  --dark-bg-primary: #0f0f0f;
+  --dark-bg-secondary: #1a1a1a;
+  --dark-text-primary: #f5f5f5;
+  --dark-text-secondary: #a1a1a1;
+  --dark-border-color: #2d2d2d;
+  --dark-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
-h1{
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-size: 2em;
-    color: hsl(234, 12%, 34%);
+
+body.dark-mode {
+  --bg-primary: var(--dark-bg-primary);
+  --bg-secondary: var(--dark-bg-secondary);
+  --text-primary: var(--dark-text-primary);
+  --text-secondary: var(--dark-text-secondary);
+  --border-color: var(--dark-border-color);
+  --shadow: var(--dark-shadow);
 }
-h3{
-    font-family: "Poppins", sans-serif;
-    font-weight: 200;
-    font-size: 2em;
-    color: hsl(234, 12%, 34%);
+
+/* ==========================================
+   Reset & Global Styles
+   ========================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-.header-line-one{
-    text-align: center;
-    margin-top: 90px;
-    margin-bottom: 25px;
+
+html {
+  scroll-behavior: smooth;
 }
-.second-pera{
-    text-align: center;
-    margin-bottom: 66px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 200;
-    font-size: 15px;
-    color:hsl(229, 6%, 66%);
+
+body {
+  font-family: 'Space Mono', 'Courier Prime', monospace;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
 }
-.all-card{
-    width: 1440px;
-    height: 530px;
-    margin: 0 auto;
-    position: relative;
-    margin-bottom: 66px;
+
+/* ==========================================
+   Theme Toggle Button
+   ========================================== */
+
+.theme-toggle {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--text-primary);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 1000;
 }
-.card-1{
-    background-color: white;
-    width: 350px;
-    height: 250px;
-    margin-left: 165px;
-    margin-bottom: 50px;
-    margin-top: 10%;
-    display: inline-block;
-    box-shadow: 10px 15px 20px rgba(159, 160, 169, 0.2);
-    border-radius: 10px;
-    position: relative;
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  background-color: var(--text-primary);
+  color: var(--bg-secondary);
 }
-.c1-wrapper{
-    background-color: white;
+
+.toggle-icon {
+  display: inline-block;
 }
-.c1-wrapper > img{
-    position: absolute;
-    bottom: 10%;
-    right: 10%;
-    background-color: white;
+
+/* ==========================================
+   Header Section
+   ========================================== */
+
+.header {
+  text-align: center;
+  padding: 80px 20px 60px;
+  max-width: 800px;
+  margin: 0 auto;
 }
-.top-cyan-line{
-    width: 350px;
-    height: 5px;
-    background-color: hsl(180, 62%, 55%);
-    top: 0;
-    left: 0;
-    border-radius: 10px 10px 0px 0px;
+
+.header-content {
+  margin-bottom: 40px;
 }
-.c1-header-text{
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-size: 1.2em;
-    color: hsl(234, 12%, 34%);
-    background-color: white;
-    margin-top: 20px;
-    margin-left: 10%;
+
+.header-subtitle {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
-.c1-card-pera{
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.5em;
-    color: hsl(229, 6%, 66%);
-    background-color: white;
-    margin-top: 10px;
-    margin-left: 10%;
-    width: 230px;
+
+.header-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -1px;
 }
-.card-2{
-    background-color: white;
-    width: 350px;
-    height: 250px;
-    box-shadow: 10px 15px 20px rgba(159, 160, 169, 0.2);
-    border-radius: 10px;
-    position: absolute;
-    display: inline-block;
-    top: 0%;
-    margin-left: 30px;
+
+.header-description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-family: 'Courier Prime', monospace;
 }
-.c2-wrapper{
-    background-color: white;
-    width: 350px;
-    height: 250px;
-    position: relative;
-    border-radius: 10px;
+
+/* ==========================================
+   Features Section & Cards Grid
+   ========================================== */
+
+.features-section {
+  padding: 60px 20px;
+  background-color: var(--bg-primary);
 }
-.c2-wrapper > img{
-    position: absolute;
-    bottom: 10%;
-    right: 10%;
-    background-color: white;
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.top-red-line{
-    width: 350px;
-    height: 5px;
-    background-color: hsl(0, 78%, 62%);
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 10px 10px 0px 0px;
+
+@media (min-width: 1024px) {
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
 }
-.c2-header-text{
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-size: 1.2em;
-    color: hsl(234, 12%, 34%);
-    background-color: white;
-    position: absolute;
-    top: 20px;
-    left: 10%;
+
+/* ==========================================
+   Feature Card Base Styles
+   ========================================== */
+
+.feature-card {
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 2px;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
 }
-.c2-card-pera{
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.5em;
-    color: hsl(229, 6%, 66%);
-    background-color: white;
-    position: absolute;
-    top: 23%;
-    left: 10%;
-    width: 230px;
+
+.feature-card:hover {
+  border-color: var(--text-primary);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
 }
-.card-3{
-    background-color: white;
-    width: 350px;
-    height: 250px;
-    box-shadow: 10px 15px 20px rgba(159, 160, 169, 0.2);
-    border-radius: 10px;
-    position: absolute;
-    display: inline-block;
-    bottom: 0%;
-    margin-left: 30px;
+
+.card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  transition: height 0.3s ease;
 }
-.c3-wrapper{
-    background-color: white;
-    width: 350px;
-    height: 250px;
-    position: relative;
-    border-radius: 10px;
+
+.feature-card:hover .card-accent {
+  height: 6px;
 }
-.c3-wrapper > img{
-    position: absolute;
-    bottom: 10%;
-    right: 10%;
-    background-color: white;
+
+/* Card-specific accent colors */
+.card-supervisor .card-accent {
+  background: linear-gradient(90deg, var(--accent-cyan), #00b4d8);
 }
-.top-orange-line{
-    width: 350px;
-    height: 5px;
-    background-color: hsl(34, 97%, 64%);
-    position: absolute;
-    border-radius: 10px 10px 0px 0px;
+
+.card-team .card-accent {
+  background: linear-gradient(90deg, var(--accent-red), #ff1744);
 }
-.c3-header-text{
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-size: 1.2em;
-    color: hsl(234, 12%, 34%);
-    background-color: white;
-    position: absolute;
-    top: 20px;
-    left: 10%;
+
+.card-karma .card-accent {
+  background: linear-gradient(90deg, var(--accent-yellow), #ffa600);
 }
-.c3-card-pera{
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.5em;
-    color: hsl(229, 6%, 66%);
-    background-color: white;
-    position: absolute;
-    top: 23%;
-    left: 10%;
-    width: 230px;
+
+.card-calculator .card-accent {
+  background: linear-gradient(90deg, var(--accent-blue), #0066ff);
 }
-.card-4{
-    background-color: white;
-    width: 350px;
-    height: 250px;
-    box-shadow: 10px 15px 20px rgba(159, 160, 169, 0.2);
-    border-radius: 10px;
-    position: absolute;
-    display: inline-block;
-    right: 0%;
-    top: 30%;
-    margin-right: 165px;
+
+/* ==========================================
+   Card Content
+   ========================================== */
+
+.card-content {
+  padding: 30px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
-.c4-wrapper{
-    background-color: white;
-    width: 350px;
-    height: 250px;
-    position: relative;
-    border-radius: 10px;
+
+.card-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 15px;
+  letter-spacing: 1px;
 }
-.c4-wrapper > img{
-    position: absolute;
-    bottom: 10%;
-    right: 10%;
-    background-color: white;
+
+.card-description {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  flex-grow: 1;
 }
-.top-blue-line{
-    width: 350px;
-    height: 5px;
-    background-color: hsl(212, 86%, 64%);
-    position: absolute;
-    border-radius: 10px 10px 0px 0px;
+
+.card-icon {
+  align-self: flex-end;
+  width: 50px;
+  height: 50px;
+  opacity: 0.8;
+  filter: grayscale(30%);
+  transition: all 0.3s ease;
 }
-.c4-header-text{
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-size: 1.2em;
-    color: hsl(234, 12%, 34%);
-    background-color: white;
-    position: absolute;
-    top: 20px;
-    left: 10%;
+
+.feature-card:hover .card-icon {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.1);
 }
-.c4-card-pera{
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.5em;
-    color: hsl(229, 6%, 66%);
-    background-color: white;
-    position: absolute;
-    top: 23%;
-    left: 10%;
-    width: 230px;
+
+/* ==========================================
+   Dark Mode - Icon Filter Adjustment
+   ========================================== */
+
+body.dark-mode .card-icon {
+  filter: grayscale(40%) brightness(1.1);
+}
+
+body.dark-mode .feature-card:hover .card-icon {
+  filter: grayscale(0%) brightness(1);
+}
+
+/* ==========================================
+   Responsive Design
+   ========================================== */
+
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 2rem;
+  }
+
+  .header-subtitle {
+    font-size: 1rem;
+  }
+
+  .header {
+    padding: 60px 20px 40px;
+  }
+
+  .cards-container {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .card-content {
+    padding: 25px;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .theme-toggle {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-title {
+    font-size: 1.5rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-description {
+    font-size: 0.9rem;
+  }
+
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
+
+/* ==========================================
+   Print Styles
+   ========================================== */
+
+@media print {
+  .theme-toggle {
+    display: none;
+  }
+
+  body.dark-mode {
+    --bg-primary: #ffffff;
+    --bg-secondary: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+  }
 }
